@@ -4,16 +4,20 @@ import { Series } from "./components/series.js";
 const main = function () {
   new Header().renderInner("#header");
   const url = "http://localhost:3000/series";
-  fetch(url)
-    .then((response) => {
+
+  initialSeries().then((data) => {
+    if (!localStorage.getItem("series")) {
+      localStorage.setItem("series", JSON.stringify(data));
+    }
+    new Series();
+  });
+
+  function initialSeries() {
+    return fetch(url).then((response) => {
+      //resp => resp.json()
       return response.json();
-    })
-    .then((data) => {
-      if (!localStorage.getItem("series")) {
-        localStorage.setItem("series", JSON.stringify(data));
-      }
-      new Series();
     });
+  }
 };
 
 document.addEventListener("DOMContentLoaded", main);
