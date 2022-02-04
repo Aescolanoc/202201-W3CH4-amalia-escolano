@@ -42,28 +42,25 @@ export class Series extends Component {
             alt="${element.name} poster"
           />
           <h4 class="serie__title">${element.name}</h4>
-          <p class="serie__info">${element.creator} ${element.year}</p>
-          <ul class="score">
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="1/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="2/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="3/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="4/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="5/5"></i>
-            </li>
-          </ul>
+          <p class="serie__info">${element.creator} (${element.year})</p>
+          <ul class="score">`;
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 1; i <= `${element.score}`; i++) {
+          template += `<li class="score__star">
+              <i class="icon--score fas fa-star" title="${j}/5"></i>
+            </li>`;
+        }
+        template += `<li class="score__star">
+              <i class="icon--score far fa-star" title="${i}/5"></i>
+            </li>`;
+      }
+
+      template += `</ul>
           <i class="fas fa-times-circle icon--delete"></i>
         </li>`;
     });
     template += `</ul></section>`;
+
     //Template wtched series
     template += `<section class="series-watched">
       <h3 class="subsection-title">Watched series</h3>
@@ -80,26 +77,21 @@ export class Series extends Component {
           />
           <h4 class="serie__title">${element.name}</h4>
           <p class="serie__info">${element.creator} ${element.year}</p>
-          <ul class="score">
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="1/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="2/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="3/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="4/5"></i>
-            </li>
-            <li class="score__star">
-              <i class="icon--score fas fa-star" title="5/5"></i>
-            </li>
-          </ul>
+          <ul class="score">`;
+
+      for (let i = 1; i <= 5; i++) {
+        for (let j = 1; i <= `${element.score}`; i++) {
+          template += `<li class="score__star">
+              <i class="icon--score fas fa-star" title="${j}/5"></i>
+            </li>`;
+        }
+        template += `<li class="score__star">
+              <i class="icon--score far fa-star" title="${i}/5"></i>
+            </li>`;
+      }
+      template += `</ul>
           <i class="fas fa-times-circle icon--delete"></i>
-        </li>  
-        `;
+        </li>`;
     });
     template += `</ul></section>`;
 
